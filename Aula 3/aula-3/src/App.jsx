@@ -3,12 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import FirstComponent from "./components/FirstComponent"
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <h1>Fundamentos <React></React></h1>
+      <h1>Fundamentos</h1>
+      <FirstComponent></FirstComponent>
     </div>
   )
 }
