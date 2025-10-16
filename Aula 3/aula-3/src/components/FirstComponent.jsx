@@ -1,10 +1,11 @@
 const FirstComponent = () => {
+  let nome = "Pedro";
+
   return (
-    <div>
-{/*  */}
-      oi
-    </div>
-  );
+      <div>
+        oi, { nome }
+      </div>
+   );
 };
 
 export default FirstComponent;
