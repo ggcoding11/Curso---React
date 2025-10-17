@@ -5,10 +5,16 @@ const Component2 = () => {
     age: 12,
   };
 
+  const handleClick = (e) => {
+    alert("oi");
+    console.log(e);
+  };
+
   return (
     <div>
       <h1>{obj.name}</h1>
       <p>{obj.age}</p>
+
     </div>
   );
 };
