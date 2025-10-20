@@ -10,11 +10,23 @@ const Component2 = () => {
     console.log(e);
   };
 
+  const renderForm = () => {
+    return (
+      <form>
+        <label htmlFor="email">Email</label>
+        <input type="email" name="" id="email" />
+      </form>
+    );
+  };
+
   return (
     <div>
       <h1>{obj.name}</h1>
       <p>{obj.age}</p>
 
+      <button onClick={handleClick}>Clicar</button>
+
+      {renderForm()}
     </div>
   );
 };
