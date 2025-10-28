@@ -5,9 +5,13 @@ function Component() {
 
   let numbers = [64, 49, 4, 16];
 
-  let novoArray = numbers.map(Math.sqrt);
+  let novoArray = numbers.map(dobrar);
 
   console.log(novoArray);
+
+  function dobrar(n){
+    return n*2
+  }
 
   return (
     <div>
