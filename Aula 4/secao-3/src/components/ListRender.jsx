@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 const ListRender = () => {
-  // const [list] = useState([1, 2, 3, 4, 5, 6]);
-  const list = [1, 2, 3, 4, 5, 6];
+  const [list, mudarList] = useState([1, 2, 3, 4, 5, 6]);
 
   return (
     <div>
@@ -11,7 +10,7 @@ const ListRender = () => {
       })}</ul> */}
 
       <ul>
-        {list.map((item) => (
+        {list.map((item, i) => (
           <li> {item} </li>
         ))}
       </ul>
