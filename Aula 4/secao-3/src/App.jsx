@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 import Component from "./components/Component";
 import Component2 from "./components/Component2";
-import ListRender from "./components/ListRender"
+import ListRender from "./components/ListRender";
+import TesteFuncoes from "./components/TesteFuncoes";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div>
@@ -16,8 +17,9 @@ function App() {
       <Component></Component>
       <ListRender></ListRender>
       <Component2></Component2>
+      <TesteFuncoes></TesteFuncoes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
