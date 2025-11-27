@@ -13,10 +13,7 @@ function App() {
   return (
     <div>
       <h1>Avançando em React</h1>
-
-      <Component></Component>
-      <ListRender></ListRender>
-      <Component2></Component2>
+      
       <TesteFuncoes></TesteFuncoes>
     </div>
   );
