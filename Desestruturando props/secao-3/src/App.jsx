@@ -1,0 +1,19 @@
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Component from "./components/Component"
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>Avançando em React</h1>
+        
+
+      <Component></Component>
+    </div>
+  );
+}
+
+export default App;
