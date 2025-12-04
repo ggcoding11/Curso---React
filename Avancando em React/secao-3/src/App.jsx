@@ -7,7 +7,12 @@ import Component2 from "./components/Component2";
 import ListRender from "./components/ListRender";
 import TesteFuncoes from "./components/TesteFuncoes";
 import Props from "./components/Props";
-import Fragmento from "./components/Fragmento"
+import Fragmento from "./components/Fragmento";
+import FunctionProp from "./components/FunctionProp";
+
+function showMessage() {
+  console.log("Olha eu aqui!!");
+}
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,7 +34,11 @@ function App() {
         ></Props>
       ))}
 
-      <Fragmento></Fragmento>
+      <FunctionProp funcao={showMessage}></FunctionProp>
+
+      {/* State lifting */}
+      <Component contador={count}></Component>
+      <Component2 setContador={()=>{setCount((count)=> count+1)}}></Component2>
     </div>
   );
 }
