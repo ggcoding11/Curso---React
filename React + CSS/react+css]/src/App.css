@@ -1,4 +1,7 @@
-.container{
-  display: flex;
-  justify-content: center;
+.red-title {
+  color: red;
+}
+
+.blue-title {
+  color: blue;
 }
