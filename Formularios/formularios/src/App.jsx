@@ -6,7 +6,7 @@ import "./App.css"
 const App = () => {
   return (
     <div className="container">
-      <MyForm></MyForm>
+      <MyForm nomeProp={"Gustavo"} emailProp={"gustavo123@gmail.com"} idadeProp={12}></MyForm>
     </div>
   );
 };
