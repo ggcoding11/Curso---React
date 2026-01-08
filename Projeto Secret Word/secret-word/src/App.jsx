@@ -14,10 +14,17 @@ const stages = [
 
 const App = () => {
   const [gameStage, setGameStage] = useState(stages[0].name);
+  const [words] = useState(wordsList);
+
+  const startGame = () => {
+    setGameStage(stages[1].name);
+  };
 
   return (
     <div className="App">
-      {gameStage === "start" && <StartScreen></StartScreen>}
+      {gameStage === "start" && (
+        <StartScreen startGame={startGame}></StartScreen>
+      )}
       {gameStage === "game" && <Game></Game>}
       {gameStage === "end" && <GameOver></GameOver>}
     </div>
