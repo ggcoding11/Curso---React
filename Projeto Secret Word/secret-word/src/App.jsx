@@ -16,8 +16,34 @@ const App = () => {
   const [gameStage, setGameStage] = useState(stages[0].name);
   const [words] = useState(wordsList);
 
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
+  const [letters, setLetters] = useState([]);
+
+  const pickCategoryAndWord = () => {
+    setPickedCategory(
+      Object.keys(wordsList)[
+        Math.floor(Math.random() * Object.keys(wordsList).length)
+      ]
+    );
+  };
+
+  useEffect(() => {
+    console.log(wordsList.pickedCategory);
+  }, [pickedCategory]);
+
   const startGame = () => {
+    pickCategoryAndWord();
+
     setGameStage(stages[1].name);
+  };
+
+  const verifyLetter = () => {
+    setGameStage(stages[2].name);
+  };
+
+  const retry = () => {
+    setGameStage(stages[0].name);
   };
 
   return (
@@ -25,8 +51,8 @@ const App = () => {
       {gameStage === "start" && (
         <StartScreen startGame={startGame}></StartScreen>
       )}
-      {gameStage === "game" && <Game></Game>}
-      {gameStage === "end" && <GameOver></GameOver>}
+      {gameStage === "game" && <Game verifyLetter={verifyLetter}></Game>}
+      {gameStage === "end" && <GameOver retry={retry}></GameOver>}
     </div>
   );
 };
