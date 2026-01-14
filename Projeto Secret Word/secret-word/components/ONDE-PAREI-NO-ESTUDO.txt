@@ -1,1 +1,1 @@
-- Preciso ver como eu consegui usar puxar a categoria do wordList pelo [], e não pelo "." como eu conhecia
+- Ver sobre Objetos desestruturados

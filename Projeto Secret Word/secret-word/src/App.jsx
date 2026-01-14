@@ -20,30 +20,23 @@ const App = () => {
   const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
 
-  const pickCategory = () => {
-    setPickedCategory(
+  const pickCategoryAndWord = () => {
+    const category =
       Object.keys(wordsList)[
         Math.floor(Math.random() * Object.keys(wordsList).length)
-      ]
-    );
+      ];
+
+    const categoryList = words[category];
+
+    const word = categoryList[Math.floor(Math.random() * categoryList.length)];
+
+    return { word, category };
   };
-
-  const pickWord = () => {
-    const categoryList = words[pickedCategory];
-
-    if (categoryList) {
-      setPickedWord(
-        categoryList[Math.floor(Math.random() * categoryList.length)]
-      );
-    }
-  };
-
-  useEffect(() => {
-    pickWord();
-  }, [pickedCategory]);
 
   const startGame = () => {
-    pickCategory();
+    const { word, category } = pickCategoryAndWord();
+
+        
 
     setGameStage(stages[1].name);
   };
