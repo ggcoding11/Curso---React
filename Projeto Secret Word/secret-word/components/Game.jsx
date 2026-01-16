@@ -1,11 +1,50 @@
 import React from "react";
 import "./Game.css";
 
-const Game = ({ verifyLetter }) => {
+const Game = ({
+  verifyLetter,
+  pickedWord,
+  pickedCategory,
+  letters,
+  guessedLetters,
+  wrongLetters,
+  guesses,
+  score,
+}) => {
   return (
-    <div>
-      <h1>Game</h1>
-      <button onClick={verifyLetter}>Finalizar jogo</button>
+    <div className="game">
+      <p className="points">
+        <span>Pontuação: {score}</span>
+      </p>
+
+      <h1>Advinhe a palavra:</h1>
+
+      <h3 className="tip">
+        Dica sobre a palavra: <span>{pickedCategory}</span>
+      </h3>
+
+      <p>Você ainda tem {guesses} tentativa(s)</p>
+
+      <div className="wordContainer">
+        {letters.map((letra) => (
+          <span className="blankSquare"></span>
+        ))}
+      </div>
+
+      <div className="letterContainer">
+        <p>Tente advinhar uma letra da palavra:</p>
+        <form action="">
+          <input type="text" name="letter" maxLength={1} required />
+
+          <button>Jogar</button>
+        </form>
+      </div>
+
+      <div className="wrongLettersContainer">
+        <p>Letras já utilizadas:</p>
+        <span>a,</span>
+        <span>b,</span>
+      </div>
     </div>
   );
 };
