@@ -72,7 +72,9 @@ const App = () => {
           pickedCategory={pickedCategory}
           letters={letters}
           guessedLetters={guessedLetters}
+          setGuessedLetters={setGuessedLetters}
           wrongLetters={wrongLetters}
+          setWrongLetters={setWrongLetters}
           guesses={guesses}
           score={score}
         ></Game>
