@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import "./Game.css";
 
@@ -15,6 +15,12 @@ const Game = ({
   score,
 }) => {
   const [letterTry, setLetterTry] = useState("");
+
+  const inputLetterRef = useRef(null);
+
+  useEffect(() => {
+    inputLetterRef.current.focus();
+  }, []);
 
   const tentarLetra = () => {
     if (letters.includes(letterTry)) {
@@ -54,25 +60,35 @@ const Game = ({
 
       <div className="letterContainer">
         <p>Tente advinhar uma letra da palavra:</p>
-        <form action="" onSubmit={(e) => e.preventDefault()}>
+        <form
+          action=""
+          onSubmit={(e) => {
+            e.preventDefault();
+            verifyLetter(letterTry);
+            setLetterTry("");
+
+            inputLetterRef.current.focus();
+          }}
+        >
           <input
             type="text"
             name="letter"
             maxLength={1}
             value={letterTry}
             onChange={(e) => setLetterTry(e.target.value)}
+            ref={inputLetterRef}
             required
           />
 
-          <button onClick={tentarLetra}>Jogar</button>
+          <button type="submit">Jogar</button>
         </form>
       </div>
 
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas:</p>
 
-        {wrongLetters.map((letra) => (
-          <span>{letra}, </span>
+        {wrongLetters.map((letra, i) => (
+          <span key={i}>{letra}, </span>
         ))}
       </div>
     </div>
