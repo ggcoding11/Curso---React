@@ -22,6 +22,14 @@ const Game = ({
     inputLetterRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    
+
+    if (uniqueLetters.length === guessedLetters.length) {
+      alert("Ganhou!");
+    }
+  }, [guessedLetters]);
+
   const tentarLetra = () => {
     if (letters.includes(letterTry)) {
       setGuessedLetters([...guessedLetters, letterTry]);
