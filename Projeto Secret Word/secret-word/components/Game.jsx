@@ -13,6 +13,8 @@ const Game = ({
   setWrongLetters,
   guesses,
   score,
+  setScore,
+  retry,
 }) => {
   const [letterTry, setLetterTry] = useState("");
 
@@ -23,10 +25,13 @@ const Game = ({
   }, []);
 
   useEffect(() => {
-    
+    const uniqueLetters = Array.from(new Set(letters));
+
+    console.log(uniqueLetters);
 
     if (uniqueLetters.length === guessedLetters.length) {
-      alert("Ganhou!");
+      setScore((score) => score + 100);
+      retry();
     }
   }, [guessedLetters]);
 

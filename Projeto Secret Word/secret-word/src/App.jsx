@@ -45,6 +45,44 @@ const App = () => {
 
     let wordLetters = word.toLowerCase().split("");
 
+    wordLetters = wordLetters.map((letra) => {
+      switch (letra) {
+        case "é":
+        case "ê":
+          letra = "e";
+          break;
+
+        case "ã":
+        case "á":
+        case "â":
+          letra = "a";
+          break;
+
+        case "í":
+          letra = "i";
+          break;
+
+        case "ó":
+        case "ô":
+        case "õ":
+          letra = "o";
+          break;
+
+        case "ú":
+          letra = "u";
+          break;
+
+        case "ç":
+          letra = "c";
+          break;
+
+        default:
+          letra = letra;
+      }
+
+      return letra;
+    });
+
     console.log(wordLetters);
 
     setPickedWord(word);
@@ -105,6 +143,8 @@ const App = () => {
           setWrongLetters={setWrongLetters}
           guesses={guesses}
           score={score}
+          setScore={setScore}
+          retry={retry}
         ></Game>
       )}
       {gameStage === "end" && <GameOver retry={retry} score={score}></GameOver>}
