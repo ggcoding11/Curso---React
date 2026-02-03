@@ -6,6 +6,9 @@ const url = `http://localhost:3000/products`;
 const App = () => {
   const [products, setProducts] = useState([]);
 
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+
   useEffect(() => {
     // async function readAPI() {
     //   const promise = await fetch(url);
@@ -25,9 +28,41 @@ const App = () => {
 
   console.log(products);
 
+  const addProduto = async (e) => {
+    e.preventDefault();
+
+    const product = { name, price };
+    const promise = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(product),
+    });
+  };
+
   return (
     <div>
       <h1>Lista de produtos</h1>
+
+      <form onSubmit={addProduto}>
+        <label>
+          Nome do produto
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+
+        <label>
+          Preço do produto
+          <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </label>
+
+        <button type="submit">Adicionar produto</button>
+      </form>
 
       {products.map((item) => (
         <ul key={item.id}>
