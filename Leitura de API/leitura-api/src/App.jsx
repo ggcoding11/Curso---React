@@ -10,32 +10,25 @@ const App = () => {
   const [price, setPrice] = useState("");
 
   useEffect(() => {
-    // async function readAPI() {
-    //   const promise = await fetch(url);
-
-    //   const json = await promise.json();
-
-    //   setProducts(json);
-    // }
-
-    // readAPI();
-
     fetch(url)
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [products]);
 
-  console.log(products);
-
-  const addProduto = async (e) => {
+  const addProduto = (e) => {
     e.preventDefault();
 
     const product = { name, price };
-    const promise = await fetch(url, {
+    const promise = fetch(url, {
       method: "POST",
       body: JSON.stringify(product),
     });
+
+    promise
+      .then((response) => response.json())
+      .then((data) => setProducts((products) => [...products, data]))
+      .catch((error) => console.log(error));
   };
 
   return (
