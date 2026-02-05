@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const url = `http://localhost:3000/products`;
 
@@ -8,18 +8,26 @@ const App = () => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const actualID = useRef(null);
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => {
+        setProducts(data);
+        data.forEach((product, index) => {
+          if (product.id > actualID.current || index === 0) {
+            actualID.current = product.id;
+          }
+        });
+      })
       .catch((error) => console.log(error));
   }, [products]);
 
   const addProduto = (e) => {
     e.preventDefault();
 
-    const product = { name, price };
+    const product = { id: actualID.current + 1, name, price };
     const promise = fetch(url, {
       method: "POST",
       body: JSON.stringify(product),
