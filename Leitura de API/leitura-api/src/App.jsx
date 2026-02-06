@@ -1,33 +1,37 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useFetch } from "./hooks/useFetch";
 
 const url = `http://localhost:3000/products`;
 
 const App = () => {
   const [products, setProducts] = useState([]);
-
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        data.forEach((product, index) => {
-          if (product.id > actualID.current || index === 0) {
-            actualID.current = product.id;
-          }
-        });
-      })
-      .catch((error) => console.log(error));
-  }, [products]);
+  const { data } = useFetch(url);
+
+  console.log(data);
+
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //       data.forEach((product, index) => {
+  //         if (product.id > actualID.current || index === 0) {
+  //           actualID.current = product.id;
+  //         }
+  //       });
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   const addProduto = (e) => {
     e.preventDefault();
 
-    const product = { id: actualID.current + 1, name, price };
+    const product = { id: Number(actualID.current) + 1, name, price };
     const promise = fetch(url, {
       method: "POST",
       body: JSON.stringify(product),
