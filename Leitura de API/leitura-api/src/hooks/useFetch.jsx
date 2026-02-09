@@ -6,12 +6,14 @@ export const useFetch = (url) => {
   useEffect(() => {
     const promise = fetch(url);
 
-    promise.then((response) => response.json());
-    promise.then((data) => {
-      setData(data);
-    });
-    promise.catch((error) => console.log(error));
+    promise
+      .then((response) => response.json())
+      .then((dados) => {
+        console.log(dados);
+        setData(dados);
+      })
+      .catch((error) => console.log(error));
   }, [url]);
 
-  return { data };
+  return data;
 };

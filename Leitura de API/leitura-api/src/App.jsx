@@ -10,9 +10,7 @@ const App = () => {
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
-  const { data } = useFetch(url);
-
-  console.log(data);
+  const items = useFetch(url);
 
   // useEffect(() => {
   //   fetch(url)
@@ -69,13 +67,14 @@ const App = () => {
         <button type="submit">Adicionar produto</button>
       </form>
 
-      {products.map((item) => (
-        <ul key={item.id}>
-          <li>{item.id}</li>
-          <li>{item.name}</li>
-          <li>{item.price}</li>
-        </ul>
-      ))}
+      {items != null &&
+        items.map((item) => (
+          <ul key={item.id}>
+            <li>{item.id}</li>
+            <li>{item.name}</li>
+            <li>{item.price}</li>
+          </ul>
+        ))}
     </div>
   );
 };
