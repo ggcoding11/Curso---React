@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import { useState, useEffect, useRef } from "react";
 import { useFetch } from "./hooks/useFetch";
 
@@ -10,7 +10,9 @@ const App = () => {
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
-  const items = useFetch(url);
+  useEffect(() => {
+    const items = useFetch(url);
+  }, []);
 
   // useEffect(() => {
   //   fetch(url)
@@ -67,8 +69,8 @@ const App = () => {
         <button type="submit">Adicionar produto</button>
       </form>
 
-      {items != null &&
-        items.map((item) => (
+      {products != null &&
+        products.map((item) => (
           <ul key={item.id}>
             <li>{item.id}</li>
             <li>{item.name}</li>

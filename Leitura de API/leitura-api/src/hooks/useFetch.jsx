@@ -9,7 +9,6 @@ export const useFetch = (url) => {
     promise
       .then((response) => response.json())
       .then((dados) => {
-        console.log(dados);
         setData(dados);
       })
       .catch((error) => console.log(error));
