@@ -10,9 +10,15 @@ const App = () => {
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
+  const data = useFetch(url);
+
   useEffect(() => {
-    const items = useFetch(url);
+    setProducts(data);
   }, []);
+
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
 
   // useEffect(() => {
   //   fetch(url)
