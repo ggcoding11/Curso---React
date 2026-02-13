@@ -5,20 +5,12 @@ import { useFetch } from "./hooks/useFetch";
 const url = `http://localhost:3000/products`;
 
 const App = () => {
-  const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
   const data = useFetch(url);
-
-  useEffect(() => {
-    setProducts(data);
-  }, []);
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  console.log(data);
 
   // useEffect(() => {
   //   fetch(url)
@@ -75,8 +67,8 @@ const App = () => {
         <button type="submit">Adicionar produto</button>
       </form>
 
-      {products != null &&
-        products.map((item) => (
+      {data != null &&
+        data.map((item) => (
           <ul key={item.id}>
             <li>{item.id}</li>
             <li>{item.name}</li>
