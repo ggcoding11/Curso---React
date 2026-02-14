@@ -9,7 +9,7 @@ const App = () => {
   const [price, setPrice] = useState("");
   const actualID = useRef(null);
 
-  const data = useFetch(url);
+  const [data, httpConfig] = useFetch(url);
   console.log(data);
 
   // useEffect(() => {
@@ -29,16 +29,18 @@ const App = () => {
   const addProduto = (e) => {
     e.preventDefault();
 
-    const product = { id: Number(actualID.current) + 1, name, price };
-    const promise = fetch(url, {
-      method: "POST",
-      body: JSON.stringify(product),
-    });
+    const product = { name, price };
 
-    promise
-      .then((response) => response.json())
-      .then((data) => setProducts((products) => [...products, data]))
-      .catch((error) => console.log(error));
+    httpConfig(product, "POST");
+    // const promise = fetch(url, {
+    //   method: "POST",
+    //   body: JSON.stringify(product),
+    // });
+
+    // promise
+    //   .then((response) => response.json())
+    //   .then((data) => setProducts((products) => [...products, data]))
+    //   .catch((error) => console.log(error));
   };
 
   return (

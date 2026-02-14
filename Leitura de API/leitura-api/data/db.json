@@ -6,19 +6,9 @@
       "price": 29.99
     },
     {
-      "id": "2",
-      "name": "Product B",
-      "price": 49.99
-    },
-    {
-      "id": "3",
-      "name": "Product C",
-      "price": 19.99
-    },
-    {
-      "id": "4",
+      "id": "29e3",
       "name": "Arroz",
-      "price": "23.4"
+      "price": "20"
     }
   ]
 }

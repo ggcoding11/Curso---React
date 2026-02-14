@@ -13,6 +13,8 @@ export const useFetch = (url) => {
         method,
         body: JSON.stringify(data),
       });
+
+      setMethod(method);
     }
   };
 
@@ -29,16 +31,16 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     if (method === "POST") {
-      let fetchOptions = [url, config];
-
       const promise = fetch(url, config);
 
       promise
         .then((response) => response.json())
-        .then((data) => setCallFetch(data))
+        .then((dados) => {
+          setCallFetch(dados);
+        })
         .catch((error) => console.log(error));
     }
   }, [config]);
 
-  return data;
+  return [data, httpConfig];
 };
