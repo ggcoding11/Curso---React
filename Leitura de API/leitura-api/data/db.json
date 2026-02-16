@@ -6,9 +6,24 @@
       "price": 29.99
     },
     {
-      "id": "29e3",
+      "id": "2850",
       "name": "Arroz",
-      "price": "20"
+      "price": "30"
+    },
+    {
+      "id": "ceb5",
+      "name": "Feijão",
+      "price": "34"
+    },
+    {
+      "id": "7285",
+      "name": "Batata",
+      "price": "23"
+    },
+    {
+      "id": "8b81",
+      "name": "Macarrão",
+      "price": "2"
     }
   ]
 }

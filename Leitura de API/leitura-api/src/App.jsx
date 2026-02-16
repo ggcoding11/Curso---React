@@ -1,46 +1,45 @@
-import React, { use } from "react";
-import { useState, useEffect, useRef } from "react";
-import { useFetch } from "./hooks/useFetch";
+import React from "react";
+import { useState, useEffect } from "react";
 
 const url = `http://localhost:3000/products`;
 
 const App = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const actualID = useRef(null);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [data, httpConfig] = useFetch(url);
-  console.log(data);
+  useEffect(() => {
+    const promise = fetch(url);
 
-  // useEffect(() => {
-  //   fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //       data.forEach((product, index) => {
-  //         if (product.id > actualID.current || index === 0) {
-  //           actualID.current = product.id;
-  //         }
-  //       });
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
+    promise
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const addProduto = (e) => {
     e.preventDefault();
 
     const product = { name, price };
 
-    httpConfig(product, "POST");
-    // const promise = fetch(url, {
-    //   method: "POST",
-    //   body: JSON.stringify(product),
-    // });
+    setLoading(true);
 
-    // promise
-    //   .then((response) => response.json())
-    //   .then((data) => setProducts((products) => [...products, data]))
-    //   .catch((error) => console.log(error));
+    const promise = fetch(url, {
+      method: "POST",
+      body: JSON.stringify(product),
+    });
+
+    promise
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts([...products, data]);
+        setLoading(false);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -69,14 +68,16 @@ const App = () => {
         <button type="submit">Adicionar produto</button>
       </form>
 
-      {data != null &&
-        data.map((item) => (
-          <ul key={item.id}>
-            <li>{item.id}</li>
-            <li>{item.name}</li>
-            <li>{item.price}</li>
+      {loading === true ? (
+        <p>Carregando...</p>
+      ) : (
+        products.map((product) => (
+          <ul key={product.id}>
+            <li>Nome: {product.name}</li>
+            <li>Preço: {product.price}</li>
           </ul>
-        ))}
+        ))
+      )}
     </div>
   );
 };
