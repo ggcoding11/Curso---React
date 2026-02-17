@@ -65,7 +65,11 @@ const App = () => {
           />
         </label>
 
-        <button type="submit">Adicionar produto</button>
+        {loading === true ? (
+          <button disabled>Aguarde...</button>
+        ) : (
+          <button type="submit">Adicionar produto</button>
+        )}
       </form>
 
       {loading === true ? (

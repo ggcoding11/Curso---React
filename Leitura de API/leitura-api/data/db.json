@@ -24,6 +24,26 @@
       "id": "8b81",
       "name": "Macarrão",
       "price": "2"
+    },
+    {
+      "id": "41ea",
+      "name": "Arroz top",
+      "price": "23"
+    },
+    {
+      "id": "47f0",
+      "name": "Feijão top",
+      "price": "32"
+    },
+    {
+      "id": "e421",
+      "name": "Jonas",
+      "price": "32"
+    },
+    {
+      "id": "3fa3",
+      "name": "Pedro henrique",
+      "price": "23"
     }
   ]
 }
