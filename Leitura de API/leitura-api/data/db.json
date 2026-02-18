@@ -6,44 +6,9 @@
       "price": 29.99
     },
     {
-      "id": "2850",
+      "id": "280e",
       "name": "Arroz",
-      "price": "30"
-    },
-    {
-      "id": "ceb5",
-      "name": "Feijão",
-      "price": "34"
-    },
-    {
-      "id": "7285",
-      "name": "Batata",
-      "price": "23"
-    },
-    {
-      "id": "8b81",
-      "name": "Macarrão",
-      "price": "2"
-    },
-    {
-      "id": "41ea",
-      "name": "Arroz top",
-      "price": "23"
-    },
-    {
-      "id": "47f0",
-      "name": "Feijão top",
-      "price": "32"
-    },
-    {
-      "id": "e421",
-      "name": "Jonas",
-      "price": "32"
-    },
-    {
-      "id": "3fa3",
-      "name": "Pedro henrique",
-      "price": "23"
+      "price": "31"
     }
   ]
 }

@@ -8,17 +8,19 @@ const App = () => {
   const [price, setPrice] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const promise = fetch(url);
-
-    promise
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((erro) => {
+        setError(erro.message);
+        setLoading(false);
+      });
   }, []);
 
   const addProduto = (e) => {
@@ -39,7 +41,10 @@ const App = () => {
         setProducts([...products, data]);
         setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((erro) => {
+        setError(erro);
+        setLoading(false);
+      });
   };
 
   return (
@@ -72,6 +77,7 @@ const App = () => {
         )}
       </form>
 
+      {error != null && <p>Erro ao carregar os dados</p>}
       {loading === true ? (
         <p>Carregando...</p>
       ) : (
