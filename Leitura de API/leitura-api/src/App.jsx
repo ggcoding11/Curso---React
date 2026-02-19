@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const url = `http://localhost:3000/products`;
 
@@ -10,10 +10,26 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const idAtual = useRef();
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log(
+          data
+            .map((product) => product.id)
+            .reduce((acum, atual) => atual > acum && atual, 0),
+        );
+
+        idAtual.current = String(
+          Number(
+            data
+              .map((product) => product.id)
+              .reduce((acum, atual) => atual > acum && atual, 0),
+          ) + 1,
+        );
+
         setProducts(data);
         setLoading(false);
       })
@@ -26,7 +42,7 @@ const App = () => {
   const addProduto = (e) => {
     e.preventDefault();
 
-    const product = { name, price };
+    const product = { id: idAtual.current, name, price };
 
     setLoading(true);
 
@@ -39,6 +55,7 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         setProducts([...products, data]);
+        idAtual.current = idAtual.current + 1;
         setLoading(false);
       })
       .catch((erro) => {
@@ -83,6 +100,7 @@ const App = () => {
       ) : (
         products.map((product) => (
           <ul key={product.id}>
+            <li>ID: {product.id}</li>
             <li>Nome: {product.name}</li>
             <li>Preço: {product.price}</li>
           </ul>
