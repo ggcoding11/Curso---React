@@ -6,6 +6,7 @@ const url = `http://localhost:3000/products`;
 const App = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [idDelete, setIdDelete] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,11 +17,7 @@ const App = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(
-          data
-            .map((product) => product.id)
-            .reduce((acum, atual) => atual > acum && atual, 0),
-        );
+        console.log(data.map((product) => product.id));
 
         idAtual.current = String(
           Number(
@@ -39,6 +36,28 @@ const App = () => {
       });
   }, []);
 
+  const deleteProduto = (e) => {
+    e.preventDefault();
+
+    const resultado = products.find(
+      (produto) => produto.id === String(idDelete),
+    );
+
+    if (resultado) {
+      fetch(url + "/" + idDelete, {
+        method: "DELETE",
+      }).then((response) => {
+        if (response.status === 200) {
+          setProducts(products.filter((produto) => produto.id != idDelete));
+        }
+      });
+    } else {
+      alert("Produto não encontrado!");
+    }
+
+    setIdDelete("");
+  };
+
   const addProduto = (e) => {
     e.preventDefault();
 
@@ -55,7 +74,9 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         setProducts([...products, data]);
-        idAtual.current = idAtual.current + 1;
+        idAtual.current = String(Number(idAtual.current) + 1);
+        setName("");
+        setPrice("");
         setLoading(false);
       })
       .catch((erro) => {
@@ -92,6 +113,19 @@ const App = () => {
         ) : (
           <button type="submit">Adicionar produto</button>
         )}
+      </form>
+
+      <form style={{ marginTop: "20px" }} onSubmit={deleteProduto}>
+        <label>
+          ID do produto a ser deletado:
+          <input
+            type="number"
+            value={idDelete}
+            onChange={(e) => setIdDelete(e.target.value)}
+          />
+        </label>
+
+        <button type="submit">Deletar</button>
       </form>
 
       {error != null && <p>Erro ao carregar os dados</p>}
