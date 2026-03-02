@@ -13,8 +13,7 @@ const App = () => {
       <h1>React Router</h1>
 
       <BrowserRouter>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home/>}></Route>
 

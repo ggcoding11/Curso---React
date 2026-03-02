@@ -1,0 +1,38 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Produto 1",
+      "preco": 10.99
+    },
+    {
+      "id": "2",
+      "nome": "Produto 2",
+      "preco": 19.99
+    },
+    {
+      "id": "3",
+      "nome": "Produto 3",
+      "preco": 5.49
+    },
+    {
+      "id": "c048"
+    },
+    {
+      "id": "bbbd"
+    },
+    {
+      "id": "6552"
+    },
+    {
+      "id": "9907"
+    },
+    {
+      "id": "4eb4"
+    },
+    {
+      "id": "45e2"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
