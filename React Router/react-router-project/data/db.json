@@ -14,6 +14,21 @@
       "id": "3",
       "nome": "Produto 3",
       "preco": 5.49
+    },
+    {
+      "id": "b2ed",
+      "nome": "Produto 4",
+      "preco": "23"
+    },
+    {
+      "id": "6a70",
+      "nome": "Produto 5",
+      "preco": "32.3"
+    },
+    {
+      "id": "2672",
+      "nome": "Produto 6",
+      "preco": "23"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -13,7 +13,10 @@ const Home = () => {
   const saveProduct = (e) => {
     e.preventDefault();
 
-    const produto = [...data, { nome, preco }];
+    const produto = {
+      nome,
+      preco,
+    };
 
     console.log(produto);
 
