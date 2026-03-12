@@ -29,6 +29,11 @@
       "id": "2672",
       "nome": "Produto 6",
       "preco": "23"
+    },
+    {
+      "id": "b799",
+      "nome": "Arroz",
+      "preco": "23"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
