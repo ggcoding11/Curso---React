@@ -1,6 +1,7 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const url = `http://localhost:3000/produtos`;
 
@@ -57,6 +58,7 @@ const Home = () => {
             <ul key={produto.id}>
               <li>{produto.nome}</li>
               <li>{produto.preco}</li>
+              <Link to={`/products/${produto.id}`}>Detalhes</Link>
             </ul>
           ))}
       </div>
