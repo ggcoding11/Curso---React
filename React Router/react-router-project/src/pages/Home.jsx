@@ -52,6 +52,8 @@ const Home = () => {
         <button type="submit">Enviar</button>
       </form>
 
+      <Link to="/about">Ir para o about</Link>
+
       <div>
         {data &&
           data.map((produto) => (

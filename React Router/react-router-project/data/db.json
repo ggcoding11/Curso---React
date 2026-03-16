@@ -34,6 +34,11 @@
       "id": "b799",
       "nome": "Arroz",
       "preco": "23"
+    },
+    {
+      "id": "0701",
+      "nome": "Feijao",
+      "preco": "22"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
