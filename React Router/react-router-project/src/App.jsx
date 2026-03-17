@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Product from "./pages/Product";
 
 import "./App.css";
+import MoreInfo from "./pages/MoreInfo";
+import Precos from "./pages/Precos";
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products/:id" element={<Product />} />
+          <Route path="/products/:id/info" element={<MoreInfo />} />
+          <Route path="/products/:id/info/precos" element={<Precos />} />
         </Routes>
       </BrowserRouter>
     </div>
