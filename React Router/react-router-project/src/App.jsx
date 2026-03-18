@@ -8,6 +8,7 @@ import Product from "./pages/Product";
 import "./App.css";
 import MoreInfo from "./pages/MoreInfo";
 import Precos from "./pages/Precos";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/products/:id" element={<Product />} />
           <Route path="/products/:id/info" element={<MoreInfo />} />
           <Route path="/products/:id/info/precos" element={<Precos />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
