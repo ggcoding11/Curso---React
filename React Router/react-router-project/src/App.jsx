@@ -9,6 +9,10 @@ import "./App.css";
 import MoreInfo from "./pages/MoreInfo";
 import Precos from "./pages/Precos";
 import NotFound from "./pages/NotFound";
+import SearchForm from "./components/SearchForm";
+import Search from "./pages/Search";
+import PaginaTeste from "./pages/PaginaTeste";
+import Teste from "./components/Teste";
 
 const App = () => {
   return (
@@ -17,12 +21,16 @@ const App = () => {
 
       <BrowserRouter>
         <Navbar />
+        <SearchForm />
+        <Teste />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products/:id" element={<Product />} />
           <Route path="/products/:id/info" element={<MoreInfo />} />
           <Route path="/products/:id/info/precos" element={<Precos />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/teste" element={<PaginaTeste />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
