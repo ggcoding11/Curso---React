@@ -9,7 +9,7 @@ const Teste = () => {
       onClick={(e) => {
         e.preventDefault();
 
-        navigate("/teste");
+        navigate("/products/1");
       }}
     >
       Teste pro useNavigate

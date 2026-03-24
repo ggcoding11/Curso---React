@@ -5,6 +5,8 @@ import { useFetch } from "../hooks/useFetch";
 const Search = () => {
   const [searchParams] = useSearchParams();
 
+  console.log(searchParams);
+
   const url = "http://localhost:3000/produtos?" + searchParams;
 
   const { data: items } = useFetch(url);
