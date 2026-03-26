@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
@@ -31,6 +31,7 @@ const App = () => {
           <Route path="/products/:id/info/precos" element={<Precos />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teste" element={<PaginaTeste />} />
+          <Route path="/company" element={<Navigate to="/about"/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -15,7 +15,7 @@ const Search = () => {
     <div>
       <h1>Resultados disponíveis</h1>
 
-      {items &&
+      {items &&     
         items.map((produto) => (
           <ul key={produto.id}>
             <li>{produto.nome}</li>
