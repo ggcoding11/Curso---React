@@ -1,0 +1,13 @@
+import React from 'react'
+
+const Contact = () => {
+  return (
+    <div>
+      <h1>Contato</h1>
+
+      <p>Minhas informações para contato</p>
+    </div>
+  )
+}
+
+export default Contact
